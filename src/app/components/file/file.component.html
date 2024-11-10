@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-4">
+        <div class="card">
+            <div class="card-heder bg-success text-center text-white font-weight-bold p-2">
+                Upload New File
+            </div>
+            <form [formGroup]="fileFormGroup">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="">Name</label>
+                            <input type="text" formControlName="fileName" class="form-control">
+                        </div>
+                        <div class="col-6">
+                            <label for="">File</label>
+                            <input type="file" formControlName="fileObj" (change)="onFileSelected($event)"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col-6 text-center">
+                            <button (click)="reset()" class="btn btn-secondary">Reset</button>
+                        </div>
+                        <div class="col-6 text-center">
+                            <button (click)="uploadFile()" [disabled]="fileFormGroup.invalid"
+                                class="btn btn-success">Upload</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="card">
+            <div class="card-heder bg-success text-center text-white font-weight-bold p-2">
+                File List
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="table_element pr-5 pl-5" style="width: 200px;">Name</th>
+                                    <th class="table_element pr-5 pl-5" style="width: 150px;">Extension</th>
+                                    <th class="table_element pr-5 pl-5" style="width: 150px;">Zipped Size</th>
+                                    <th class="table_element pr-5 pl-5" style="width: 150px;">Original Size</th>
+                                    <th class="table_element pr-5 pl-5" style="width: 400px;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for(file of files; track $index) {
+                                <tr>
+                                    <th class="table_element pr-5 pl-5" style="width: 200px;">{{ file.name }}</th>
+                                    <th class="table_element pr-5 pl-5" style="width: 150px;">{{ file.type }}</th>
+                                    <th class="table_element pr-5 pl-5" style="width: 150px;">{{ file.zippedSize }}</th>
+                                    <th class="table_element pr-5 pl-5" style="width: 150px;">{{ file.originalSize }}</th>
+                                    <th class="table_element pr-5 pl-5" style="width: 400px;">
+                                        <button (click)="downloadFile(file)" class="btn btn-success mx-1">Download</button>
+                                        <button (click)="deleteFile(file)" class="btn btn-danger mx-1">Delete</button>
+                                    </th>
+                                </tr>
+                                }
+                            </tbody>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
