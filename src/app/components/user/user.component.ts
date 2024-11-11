@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { environment } from '../../../environments/environment.development';
 import { Constant } from '../../constants/constant';
@@ -19,7 +19,8 @@ import { Router } from '@angular/router';
     ReactiveFormsModule,
   ],
   templateUrl: './user.component.html',
-  styleUrl: './user.component.css'
+  styleUrl: './user.component.css',
+  // encapsulation: ViewEncapsulation.None,
 })
 export class UserComponent implements OnInit {
 

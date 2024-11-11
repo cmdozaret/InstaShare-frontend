@@ -2,3 +2,7 @@
     margin-left: 20px;
     margin-right: 20px;
 }
+
+div, thead, th, tr {
+    background-color: rgb(147, 247, 157);
+}
